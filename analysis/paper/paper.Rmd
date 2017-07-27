@@ -1,8 +1,7 @@
 ---
-title: "Title Goes Here"
+title: "Create Package using rrtools"
 author:
-  - author 1
-  - author 2
+  - Wolfgang Hamer
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: 
     bookdown::html_document2:
@@ -11,7 +10,7 @@ output:
 bibliography: references.bib
 csl: journal-of-archaeological-science.csl
 abstract: |
-  Text of abstract
+  This files recapitulates how to create a package using rrtools.
 keywords: |
   keyword 1; keyword 2; keyword 3
 highlights: |
@@ -36,42 +35,78 @@ library(TestOfBen)
 
 # Introduction
 
-Here is a citation [@Marwick2017]
+Ben Marwick recommends the usuage of RStudio using his [rrtools](https://github.com/benmarwick/rrtools). As Daniel Knitter has shown in his [RRREmacs](http://htmlpreview.github.io/?https://github.com/dakni/EmacsEssay/blob/master/analysis/paper/paper.html) package, also Emacs can be the medium to use rrtools. Since I like to work with Tinn-R I tested rrtools using this environment.   
 
-# Background
 
-```{r demo, eval = FALSE}
-1 + 1
+# First steps
+At first I simply followed the steps explained in the [rrtools](https://github.com/benmarwick/rrtools) readme file, beginning with the definition of my working directory and the installation of rrtools.
+
+
+```{r demo, eval = FALSE, echo = TRUE}
+setwd("E:/FilePath")
+
+devtools::install_github("benmarwick/rrtools")
+
 ```
 
-# Methods
+Then I went on creating the specific R package files with the rrtools and devtools methods. 
 
-# Results
+```{r eval = FALSE, echo = TRUE}
 
-```{r get-data, eval = FALSE}
-# Note the path that we need to use to access our data files when rendering this document
-my_data <- readr::read_csv("../data/raw_data/my_csv_file.csv")
+rrtools::use_compendium("TestOfBen")
+
+devtools::use_mit_license(copyright_holder = "Wolfgang Hamer")
+
+#Token:  https://github.com/settings/tokens
+devtools::use_github(".", auth_token = "xxxxx", protocol = "https", private = FALSE)
+
+rrtools::use_readme_rmd()
+
+rrtools::use_analysis()
+
+rrtools::use_dockerfile()
+
+rrtools::use_travis()
 ```
 
-# Discussion
+At first the travis test would not pass, since the package name contained large letters:
 
-# Conclusion
+![](../figures/lowercase.PNG) 
 
-# Acknowledgements
+The problem could be solved quite easily by changing the entry in the travis.yml file:
 
-# References 
+![](../figures/smallletters.PNG) 
+ 
+
+# Build
+
+Afterwards I could build the package and install it:
+
+```{r eval = FALSE, echo = TRUE}
+devtools::build()
+
+devtools::install()
+```
+
+Then I could render the .Rmd files:
+
+```{r eval = FALSE, echo = TRUE}
+rmarkdown::render("analysis/paper/paper.Rmd") 
+```
+and push the whole thing on my GitHub Account using the commands in the terminal:
+
+- _git status_
+- _git add ._
+- _git commit -m "What was changed"_
+- _git push_
 
 ### Colophon
 
 This report was generated on `r Sys.time()` using the following computational environment and dependencies: 
 
-```{r colophon, cache = FALSE, eval = FALSE}
+```{r colophon, cache = FALSE}
 # which R packages and versions?
 devtools::session_info()
- 
-# what commit is this file at? You may need to change the path value
-# if your Rmd is not in analysis/paper/
-current_commit <- rrtools::current_git_commit(path = "../..")
 ```
 
 
