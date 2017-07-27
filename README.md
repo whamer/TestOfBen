@@ -3,6 +3,8 @@
 TestOfBen
 =========
 
+[![Travis-CI Build Status](https://travis-ci.org/whamer/TestOfBen.svg?branch=master)](https://travis-ci.org/whamer/TestOfBen)
+
 The goal of TestOfBen is to ...
 
 ### Citation
@@ -26,7 +28,7 @@ devtools::install_github("whamer/TestOfBen")
 
 **Code:** See the [DESCRIPTION](DESCRIPTION) file
 
-\*\*<Data:**> [CC-0](http://creativecommons.org/publicdomain/zero/1.0/) attribution requested in reuse
+**Data:** [CC-0](http://creativecommons.org/publicdomain/zero/1.0/) attribution requested in reuse
 
 ### Contributions
 
