@@ -1,9 +1,11 @@
 Package: TestOfBen
-Title: What the Package Does (one line, title case)
+Title: Test of Ben Marwicks rrtools
 Version: 0.0.0.9000
-Authors@R: person("First", "Last", email = "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
+Authors@R: person("Wolfgang", "Hamer", email = "hamer@geographie.uni-kiel.de", role = c("aut", "cre"))
+Description: This package tests the package rrtools of Ben Marwick
 Depends: R (>= 3.4.1)
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
+URL: https://github.com/whamer/TestOfBen
+BugReports: https://github.com/whamer/TestOfBen/issues
