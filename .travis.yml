@@ -2,7 +2,7 @@
 
 env:
   global:
-  - REPO=$DOCKER_USER/TestOfBen
+  - REPO=$DOCKER_USER/testofben
 
 sudo: required
 
